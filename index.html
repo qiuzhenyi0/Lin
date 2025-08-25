@@ -1,258 +1,193 @@
 <!DOCTYPE html>
-
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>o0 & o1</title>
-  <style>
-    body {
-      font-family: "Microsoft JhengHei", sans-serif;
-      background: linear-gradient(135deg, #dff6ff, #e6d6f5);
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我們的網站</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
-```
-.header-image {
-  width: 100%;
-  max-width: 720px;
-  height: 200px;
-  background-image: url('images/cats/IMG_8228.jpeg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
+        body {
+            margin: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-.cards-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.card {
-  width: 320px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 15px;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .header {
+            width: 100%;
+            background-color: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-}
+        .header img {
+            width: 100%;
+            display: block;
+        }
 
-.name-tag {
-  background: white;
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 30px;
-  font-weight: bold;
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
+        .profile-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-.info {
-  margin-top: 15px;
-  background: rgba(50,50,50,0.4);
-  color: white;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 14px;
-  line-height: 1.6;
-  text-align: left;
-}
+        .profile-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.info p {
-  margin: 6px 0;
-}
+        .profile-card .name-box {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 8px 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
 
-.countdown-section {
-  width: 100%;
-  max-width: 720px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
+        .profile-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+        }
 
-.countdown-title {
-  font-size: 20px;
-  margin-bottom: 15px;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: bold;
-}
+        .profile-card p {
+            margin: 5px 0;
+            text-align: center;
+        }
 
-.countdown {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  backdrop-filter: blur(10px);
-}
+        .countdown-section {
+            width: 100%;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-.shared-meaning {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 15px;
-  border-left: 4px solid #ffd700;
-  text-align: left;
-}
+        .countdown-section h2 {
+            margin: 0 0 15px;
+            font-size: 1.5em;
+        }
 
-.shared-meaning h3 {
-  color: #ffd700;
-  margin-bottom: 8px;
-  font-size: 16px;
-}
+        .countdown-timer {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e91e63;
+        }
 
-.shared-meaning p {
-  margin: 5px 0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.flag-colors {
-  display: inline-flex;
-  width: 60px;
-  height: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-left: 10px;
-  vertical-align: middle;
-}
-
-.flag-blue { background: #0055a4; flex: 1; }
-.flag-white { background: #ffffff; flex: 1; }
-.flag-red { background: #ef4135; flex: 1; }
-
-@media (max-width: 768px) {
-  .cards-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  body {
-    padding: 10px;
-  }
-  
-  .header-image {
-    height: 150px;
-  }
-}
-```
-
-  </style>
+        .footer {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 共同圖片 -->
+    <div class="container">
+        <div class="header">
+            <img src="images/cats/IMG_8228.jpeg" alt="我們的合照">
+        </div>
 
-  <div class="header-image"></div>
+        <div class="profile-section">
+            <div class="profile-card">
+                <div class="name-box">o0</div>
+                <h3>基本資料</h3>
+                <p>性別: 男</p>
+                <p>生日: 1999-9-22</p>
+                <p>專業: 科技相關、已就業</p>
+                <p>性格: 謙和、會對o1開玩笑</p>
+                <p>關係: 和o1是情侶</p>
+                <p>政治立場: 偏右派</p>
+                <p>共同特徵: 腰間特意染白腰帶，形成藍白紅配色，寓意與法國國旗一致（自由、平等、博愛）。</p>
+            </div>
 
-  <!-- 兩個資料卡片 -->
+            <div class="profile-card">
+                <div class="name-box">o1</div>
+                <h3>基本資料</h3>
+                <p>性別: 女</p>
+                <p>生日: 2000-5-17</p>
+                <p>專業: 心理在讀、設計系畢業</p>
+                <p>性格: 白切黑、有點偏執</p>
+                <p>關係: 和o0是情侶</p>
+                <p>政治立場: 中立偏左</p>
+                <p>共同特徵: 腰間特意染白腰帶，形成藍白紅配色，寓意與法國國旗一致（自由、平等、博愛）。</p>
+            </div>
+        </div>
 
-  <div class="cards-container">
-    <!-- o0 -->
-    <div class="card">
-      <div class="name-tag">o0</div>
-      <div class="info">
-        <p>性別：男</p>
-        <p>名字：o0</p>
-        <p>設定形象：五週年線框斗，腰帶染白</p>
-        <p>專業/任職：科技相關、已就業</p>
-        <p>性格：謙和，會對 o1 開玩笑</p>
-        <p>關係：和 o1 是情侶</p>
-        <p>生日：1999-09-22</p>
-        <p>紀念日：2024-10-18</p>
-        <p>政治立場：偏右派</p>
-      </div>
+        <div class="countdown-section">
+            <h2>我們的紀念日倒數</h2>
+            <div id="countdown" class="countdown-timer"></div>
+        </div>
+        
+        <div class="footer">
+            <p>五週年線框斗 & 亮色彩虹斗</p>
+            <p>交往紀念日: 2024-10-18</p>
+        </div>
     </div>
 
-```
-<!-- o1 -->
-<div class="card">
-  <div class="name-tag">o1</div>
-  <div class="info">
-    <p>性別：女</p>
-    <p>名字：o1</p>
-    <p>設定形象：亮色彩虹斗，腰帶染白</p>
-    <p>專業/任職：心理在讀、設計系畢業</p>
-    <p>性格：白切黑，有點偏執</p>
-    <p>關係：和 o0 是情侶</p>
-    <p>生日：2000-05-17</p>
-    <p>紀念日：2024-10-18</p>
-    <p>政治立場：中立偏左</p>
-  </div>
-</div>
-```
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const countdownElement = document.getElementById('countdown');
 
-  </div>
+            function updateCountdown() {
+                const now = new Date();
+                const anniversaryMonth = 9; // 10月是JS的9月 (0-11)
+                const anniversaryDay = 18;
+                let currentYear = now.getFullYear();
 
-  <!-- 共同紀念日倒數 -->
+                // 計算下一個紀念日
+                let nextAnniversary = new Date(currentYear, anniversaryMonth, anniversaryDay);
+                // 如果今年的紀念日已經過了，就計算明年的
+                if (now > nextAnniversary) {
+                    nextAnniversary = new Date(currentYear + 1, anniversaryMonth, anniversaryDay);
+                }
 
-  <div class="countdown-section">
-    <div class="countdown-title">週年紀念日倒數</div>
-    <div class="countdown" id="countdown"></div>
+                // 計算紀念日總共過了多少年
+                const initialAnniversary = new Date(2024, anniversaryMonth, anniversaryDay);
+                const yearsPassed = nextAnniversary.getFullYear() - initialAnniversary.getFullYear();
+                
+                // 計算倒數時間
+                const totalSeconds = (nextAnniversary.getTime() - now.getTime()) / 1000;
 
-```
-<div class="shared-meaning">
-  <h3>共同特徵 <span class="flag-colors"><div class="flag-blue"></div><div class="flag-white"></div><div class="flag-red"></div></span></h3>
-  <p>兩人腰間都特意染白腰帶，形成藍白紅配色</p>
-  <p><strong>寓意：</strong>腰帶配色寓意與法國國旗一致（自由、平等、博愛）</p>
-</div>
-```
+                const days = Math.floor(totalSeconds / (60 * 60 * 24));
+                const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+                const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+                const seconds = Math.floor(totalSeconds % 60);
 
-  </div>
+                const countdownText = `${yearsPassed} 週年紀念日倒數：${days}天 ${hours}小時 ${minutes}分 ${seconds}秒`;
+                countdownElement.textContent = countdownText;
+            }
 
-  <script>
-    function updateCountdown() {
-      const now = new Date();
-      let year = now.getFullYear();
-      let target = new Date(year, 9, 18); // 10月18日
-
-      // 如果今天已經過了，就算明年
-      if (now > target) {
-        target = new Date(year + 1, 9, 18);
-      }
-
-      const diff = target - now;
-      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-      // 算週年數（交往年份是 2024）
-      const anniversaryYear = 2024;
-      const currentAnniversary = target.getFullYear() - anniversaryYear;
-
-      document.getElementById("countdown").textContent =
-        `距離第 ${currentAnniversary} 週年紀念日還有 ${days} 天 ❤️`;
-    }
-
-    // 更新倒數
-    updateCountdown();
-    
-    // 每天更新一次倒數
-    setInterval(updateCountdown, 86400000);
-  </script>
-
+            // 每秒更新倒數
+            setInterval(updateCountdown, 1000);
+            updateCountdown(); // 立即執行一次，避免載入時有延遲
+        });
+    </script>
 </body>
 </html>
