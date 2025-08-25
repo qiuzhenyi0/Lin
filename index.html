@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>o0 & o1</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(135deg, #dff6ff, #e6d6f5);
+      margin: 0;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .card {
+      width: 320px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .name-tag {
+      background: white;
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .info {
+      margin-top: 15px;
+      background: rgba(50,50,50,0.4);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .info p {
+      margin: 6px 0;
+    }
+
+    .countdown {
+      margin-top: 15px;
+      background: rgba(255,255,255,0.3);
+      color: #333;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- o0 -->
+  <div class="card">
+    <div class="name-tag">o0</div>
+    <img src="images/cats/IMG_8228.jpeg" alt="o0">
+    <div class="info">
+      <p>性別：男</p>
+      <p>名字：o0</p>
+      <p>設定形象：五週年線框斗，腰帶染白</p>
+      <p>專業/任職：科技相關、已就業</p>
+      <p>性格：謙和，會對 o1 開玩笑</p>
+      <p>關係：和 o1 是情侶</p>
+      <p>生日：1999-09-22</p>
+      <p>紀念日：2024-10-18</p>
+      <p>政治立場：偏右派</p>
+    </div>
+    <div class="countdown" id="countdown-o0"></div>
+  </div>
+
+  <!-- o1 -->
+  <div class="card">
+    <div class="name-tag">o1</div>
+    <img src="images/cats/IMG_8228.jpeg" alt="o1">
+    <div class="info">
+      <p>性別：女</p>
+      <p>名字：o1</p>
+      <p>設定形象：亮色彩虹斗，腰帶染白</p>
+      <p>專業/任職：心理在讀、設計系畢業</p>
+      <p>性格：自切黑，有點毒舌觀</p>
+      <p>關係：和 o0 是情侶</p>
+      <p>生日：2000-05-17</p>
+      <p>紀念日：2024-10-18</p>
+      <p>政治立場：中立偏左</p>
+    </div>
+    <div class="countdown" id="countdown-o1"></div>
+  </div>
+
+  <script>
+    function updateCountdown(elementId, month, day) {
+      const now = new Date();
+      let year = now.getFullYear();
+      let target = new Date(year, month - 1, day);
+
+      // 如果今天已經過了，就算明年
+      if (now > target) {
+        target = new Date(year + 1, month - 1, day);
+      }
+
+      const diff = target - now;
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+      // 算週年數（交往年份是 2024）
+      const anniversaryYear = 2024;
+      const currentAnniversary = target.getFullYear() - anniversaryYear;
+
+      document.getElementById(elementId).textContent =
+        `距離第 ${currentAnniversary} 週年紀念日還有 ${days} 天 ❤️`;
+    }
+
+    // 更新 o0 & o1 倒數（10月18日）
+    updateCountdown("countdown-o0", 10, 18);
+    updateCountdown("countdown-o1", 10, 18);
+  </script>
+
+</body>
+</html>
