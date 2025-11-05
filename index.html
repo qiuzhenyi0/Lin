@@ -8,39 +8,48 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
         /* --- 輪播 (Carousel) 專用樣式 --- */
-        .conteudo_geral {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .container-carrossel {
-            width: 100%;
-            height: 300px; /* 您可以調整高度 */
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        .carrossel {
-            display: flex;
-            width: 10000%; /* 確保所有圖片並排的寬度 */
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carrossel-item {
-            min-width: 100%; /* 每個項目佔據輪播區塊的 100% 寬度 */
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-        }
-        .carrossel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 關鍵：確保圖片填滿空間並裁剪多餘部分 */
-            display: block;
-        }
-        /* --- 輪播樣式結束 --- */
+.conteudo_geral {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.container-carrossel {
+    width: 100%;
+    /* 調整高度為較小的值，例如 200px 或使用百分比（如果父元素有固定高度） */
+    /* 為了響應式設計，我們也可以使用視窗寬度單位 vw */
+    height: 60vw; /* 讓高度是寬度的 60%，這樣在不同螢幕尺寸下比例會一致 */
+    max-height: 300px; /* 設定一個最大高度，避免在桌面版過高 */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    background-color: #eee; /* 新增：給個背景色，方便查看容器是否正常 */
+}
+.carrossel {
+    display: flex;
+    width: 10000%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.carrossel-item {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    /* 新增：在圖片沒載入時，也能看到邊界 */
+    border: 1px solid rgba(0,0,0,0.05); 
+}
+.carrossel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 關鍵：確保圖片填滿空間並裁剪多餘部分 */
+    display: block;
+    /* 新增：如果圖片本身有問題，這個也能幫助我們判斷 */
+    background-color: lightgray; 
+}
+/* --- 輪播樣式結束 --- */
+
         
         body {
             margin: 0;
