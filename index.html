@@ -35,17 +35,27 @@
         .carrossel-item {
             min-width: 100%;
             height: 100%;
-            /* 移除 display: flex 以確保圖片 object-fit 正常運作 */
             flex-shrink: 0;
-            border: 1px solid rgba(0,0,0,0.05); 
+            border: 1px solid rgba(0,0,0,0.05);
+            /* 讓內部的圖片可以相對於此元素絕對定位 */
+            position: relative; 
         }
 
         .carrossel-item img {
+            /* 使用絕對定位和 100% 寬高，強行讓圖片填滿容器 */
+            position: absolute; 
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%; 
-            object-fit: cover; /* 關鍵：確保圖片填滿空間並裁剪多餘部分 */
+            
+            /* 關鍵：確保圖片填滿空間並裁剪多餘部分，保持比例 */
+            object-fit: cover; 
+            
             display: block;
             background-color: lightgray; 
+            min-width: 0; 
+            min-height: 0;
         }
         /* --- 輪播樣式結束 --- */
         
@@ -196,7 +206,7 @@
                     <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0364.jpeg" alt="紀念照片 3"></div>
                     <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0448.jpeg" alt="紀念照片 4"></div>
                     <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0969.jpeg" alt="紀念照片 5"></div>
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_9477.png" alt="紀念照片 6"></div>
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_9229.jpeg" alt="紀念照片 6"></div>
                 </div>
             </div>
         </div>
