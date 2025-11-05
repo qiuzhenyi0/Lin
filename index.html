@@ -15,14 +15,13 @@
 
         .container-carrossel {
             width: 100%;
-            /* 響應式高度，避免在手機上過大 */
+            /* 響應式高度 */
             height: 60vw;
             max-height: 300px;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             position: relative;
-            background-color: #eee;
         }
 
         .carrossel {
@@ -37,25 +36,33 @@
             height: 100%;
             flex-shrink: 0;
             border: 1px solid rgba(0,0,0,0.05);
-            /* 讓內部的圖片可以相對於此元素絕對定位 */
             position: relative; 
+            
+            /* 圖片填充關鍵樣式：使用背景圖 */
+            background-size: cover;          
+            background-position: center;     
+            background-repeat: no-repeat;    
+            background-color: #333;          
         }
 
-        .carrossel-item img {
-            /* 使用絕對定位和 100% 寬高，強行讓圖片填滿容器 */
-            position: absolute; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; 
-            
-            /* 關鍵：確保圖片填滿空間並裁剪多餘部分，保持比例 */
-            object-fit: cover; 
-            
-            display: block;
-            background-color: lightgray; 
-            min-width: 0; 
-            min-height: 0;
+        /* 🎯 為每個項目指定背景圖片 URL */
+        .item-1 {
+            background-image: url('https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0969.jpeg');
+        }
+        .item-2 {
+            background-image: url('https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0322.jpeg');
+        }
+        .item-3 {
+            background-image: url('https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0145.png');
+        }
+        .item-4 {
+            background-image: url('https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0364.jpeg');
+        }
+        .item-5 {
+            background-image: url('https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_9229.jpeg');
+        }
+        .item-6 {
+            background-image: url('https://raw.githubusercontent.com/qiuzhenyi0/Lin/images/cats/IMG_0448.jpeg');
         }
         /* --- 輪播樣式結束 --- */
         
@@ -201,12 +208,12 @@
         <div class="conteudo_geral">
             <div class="container-carrossel">
                 <div class="carrossel">
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0145.png" alt="紀念照片 1"></div>
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0322.jpeg" alt="紀念照片 2"></div>
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0364.jpeg" alt="紀念照片 3"></div>
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0448.jpeg" alt="紀念照片 4"></div>
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0969.jpeg" alt="紀念照片 5"></div>
-                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_9229.jpeg" alt="紀念照片 6"></div>
+                    <div class="carrossel-item item-1"></div>
+                    <div class="carrossel-item item-2"></div>
+                    <div class="carrossel-item item-3"></div>
+                    <div class="carrossel-item item-4"></div>
+                    <div class="carrossel-item item-5"></div>
+                    <div class="carrossel-item item-6"></div>
                 </div>
             </div>
         </div>
