@@ -7,6 +7,41 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
+        /* --- 輪播 (Carousel) 專用樣式 --- */
+        .conteudo_geral {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .container-carrossel {
+            width: 100%;
+            height: 300px; /* 您可以調整高度 */
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .carrossel {
+            display: flex;
+            width: 10000%; /* 確保所有圖片並排的寬度 */
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carrossel-item {
+            min-width: 100%; /* 每個項目佔據輪播區塊的 100% 寬度 */
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .carrossel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 關鍵：確保圖片填滿空間並裁剪多餘部分 */
+            display: block;
+        }
+        /* --- 輪播樣式結束 --- */
+        
         body {
             margin: 0;
             font-family: 'Noto Sans TC', sans-serif;
@@ -145,7 +180,19 @@
                 <p>共同特徵: 腰間特意染白腰帶，形成藍白紅配色，寓意與法國國旗一致（自由、平等、博愛）。</p>
             </div>
         </div>
-
+        
+        <div class="conteudo_geral">
+            <div class="container-carrossel">
+                <div class="carrossel">
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0145.png" alt="紀念照片 1"></div>
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0322.jpeg" alt="紀念照片 2"></div>
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0364.jpeg" alt="紀念照片 3"></div>
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0448.jpeg" alt="紀念照片 4"></div>
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_0969.jpeg" alt="紀念照片 5"></div>
+                    <div class="carrossel-item"><img src="https://raw.githubusercontent.com/qiuzhenyi0/Lin/main/images/cats/IMG_9477.png" alt="紀念照片 6"></div>
+                </div>
+            </div>
+        </div>
         <div class="countdown-section">
             <h2>我們的紀念日倒數</h2>
             <div id="countdown" class="countdown-timer"></div>
@@ -158,7 +205,10 @@
     </div>
 
     <script>
+        // 將所有腳本整合到同一個 DOMContentLoaded 監聽器中
         document.addEventListener('DOMContentLoaded', (event) => {
+            
+            // --- 倒數計時腳本 ---
             const countdownElement = document.getElementById('countdown');
 
             function updateCountdown() {
@@ -176,7 +226,8 @@
 
                 // 計算紀念日總共過了多少年
                 const initialAnniversary = new Date(2024, anniversaryMonth, anniversaryDay);
-                const yearsPassed = nextAnniversary.getFullYear() - initialAnniversary.getFullYear();
+                // 這裡計算的 yearsPassed 是為了顯示在倒數文字中
+                const yearsPassed = nextAnniversary.getFullYear() - initialAnniversary.getFullYear(); 
                 
                 // 計算倒數時間
                 const totalSeconds = (nextAnniversary.getTime() - now.getTime()) / 1000;
@@ -184,7 +235,8 @@
                 const days = Math.floor(totalSeconds / (60 * 60 * 24));
                 const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
                 const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-                const seconds = Math.floor(totalSeconds % 60);
+                // 秒數在這裡被省略了，因為您原來的範例沒有顯示
+                // const seconds = Math.floor(totalSeconds % 60);
 
                 const countdownText = `${yearsPassed} 週年紀念日倒數：${days}d ${hours}h ${minutes}m`;
                 countdownElement.textContent = countdownText;
@@ -193,6 +245,25 @@
             // 每秒更新倒數
             setInterval(updateCountdown, 1000);
             updateCountdown(); // 立即執行一次，避免載入時有延遲
+
+            // --- 輪播 (Carousel) 腳本 ---
+            const carrossel = document.querySelector('.carrossel');
+            const items = document.querySelectorAll('.carrossel-item');
+            const totalItems = items.length;
+            let currentIndex = 0;
+
+            function nextSlide() {
+                currentIndex++;
+                if (currentIndex >= totalItems) {
+                    currentIndex = 0; // 循環回到第一張
+                }
+
+                const offset = -currentIndex * 100;
+                carrossel.style.transform = `translateX(${offset}%)`;
+            }
+
+            // 每 3 秒自動切換
+            setInterval(nextSlide, 3000);
         });
     </script>
 </body>
